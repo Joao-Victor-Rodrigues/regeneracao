@@ -32,15 +32,14 @@ jobs:
       - name: Executar Script de Extração
         env:
           EARTH_ENGINE_KEY: ${{ secrets.EARTH_ENGINE_KEY }}
-          NOME_EXCEL: analise.xlsx
+          PASTA_SAIDA: analise
           PASTA_AREAS: areas
         run: poetry run python extrator.py
 
-      - name: Salvar analise.xlsx no Repositório
+      - name: Salvar dados no Repositório
         run: |
           git config --local user.name "github-actions[bot]"
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git add analise.xlsx
-          git commit -m "chore: atualização semanal de dados orbitais [skip ci]" || exit 0 
-          # o '|| exit 0' acima evita que o workflow falhe se não houver dados novos para commitar
+          git add analise/
+          git commit -m "chore: atualização semanal de dados orbitais [skip ci]" || exit 0
           git push
