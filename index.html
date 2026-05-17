@@ -33,14 +33,12 @@ header{position:sticky;top:0;z-index:100;background:rgba(13,17,23,.93);backdrop-
 @keyframes gl{0%,100%{opacity:1}50%{opacity:.4}}
 .page{padding:20px 24px;max-width:1400px;margin:0 auto}
 @media(max-width:660px){.page{padding:12px}}
-/* SUMMARY */
 .sum{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:18px}
 .sc{background:var(--s1);border:1px solid var(--bd);border-radius:var(--r);padding:14px 16px}
 .scl{font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--dm);margin-bottom:5px}
 .scv{font-family:'JetBrains Mono',monospace;font-size:24px;font-weight:500;line-height:1}
 .scv.g{color:var(--gn)}.scv.b{color:var(--bl)}.scv.y{color:var(--yw)}
 .scs{font-size:11px;color:var(--dm);margin-top:3px}
-/* CONTROLS */
 .ctrl{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
 .clbl{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--dm);text-transform:uppercase;letter-spacing:.07em}
 select{background:var(--s2);border:1px solid var(--bd);border-radius:5px;color:var(--tx);padding:6px 11px;font-family:'JetBrains Mono',monospace;font-size:12px;cursor:pointer;outline:none;transition:border-color .15s}
@@ -49,7 +47,6 @@ select:focus{border-color:var(--bl)}
 .btn{padding:5px 10px;border-radius:5px;border:1px solid var(--bd);background:transparent;color:var(--dm);font-family:'JetBrains Mono',monospace;font-size:11px;cursor:pointer;transition:all .15s}
 .btn:hover{border-color:var(--mt);color:var(--tx)}
 .btn.on{border-color:var(--gn);background:rgba(63,185,80,.1);color:var(--gn)}
-/* INDEX TABS */
 .itabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
 .it{padding:5px 13px;border-radius:20px;border:1px solid var(--bd);background:transparent;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--dm);cursor:pointer;transition:all .15s}
 .it:hover{border-color:var(--mt);color:var(--tx)}
@@ -58,7 +55,6 @@ select:focus{border-color:var(--bl)}
 .it.sEVI {border-color:var(--evi); background:rgba(240,136,62,.1);color:var(--evi)}
 .it.sSAVI{border-color:var(--savi);background:rgba(188,140,255,.1);color:var(--savi)}
 .it.sNBR {border-color:var(--nbr); background:rgba(248,81,73,.1);color:var(--nbr)}
-/* PANEL */
 .panel{background:var(--s1);border:1px solid var(--bd);border-radius:var(--r);padding:18px;margin-bottom:12px}
 .ph{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap}
 .pt{font-size:13px;font-weight:600}
@@ -66,7 +62,6 @@ select:focus{border-color:var(--bl)}
 .li{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--dm)}
 .ll{width:16px;height:2px;border-radius:2px}
 .ld{width:16px;height:0;border-top:2px dashed}
-/* STATS */
 .sg{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:10px;margin-bottom:12px}
 .st{background:var(--s2);border:1px solid var(--bd);border-radius:var(--r);padding:13px 15px;position:relative;overflow:hidden}
 .st::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px}
@@ -81,7 +76,6 @@ select:focus{border-color:var(--bl)}
 .badge.up{background:rgba(63,185,80,.15);color:var(--gn)}
 .badge.dn{background:rgba(248,81,73,.15);color:var(--rd)}
 .badge.ne{background:rgba(125,133,144,.15);color:var(--dm)}
-/* SMALL CHARTS */
 .smg{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 @media(max-width:660px){.smg{grid-template-columns:1fr}}
 .smp{background:var(--s2);border:1px solid var(--bd);border-radius:var(--r);padding:14px}
@@ -114,19 +108,19 @@ select:focus{border-color:var(--bl)}
   <div class="sum" id="sumcards"></div>
 
   <div class="ctrl">
-    <span class="clbl">ROI</span>
+    <span class="clbl">Área</span>
     <select id="roisel"></select>
     <span class="clbl" style="margin-left:6px">Média móvel</span>
     <div class="bg" id="magrp">
-      <button class="btn" data-v="0">Off</button>
-      <button class="btn on" data-v="4">4 sem</button>
-      <button class="btn" data-v="8">8 sem</button>
-      <button class="btn" data-v="12">12 sem</button>
+      <button class="btn" data-v="0">Desativada</button>
+      <button class="btn on" data-v="4">4 semanas</button>
+      <button class="btn" data-v="8">8 semanas</button>
+      <button class="btn" data-v="12">12 semanas</button>
     </div>
     <span class="clbl" style="margin-left:6px">Regressão</span>
     <div class="bg" id="reggrp">
-      <button class="btn on" data-v="1">On</button>
-      <button class="btn" data-v="0">Off</button>
+      <button class="btn on" data-v="1">Exibir</button>
+      <button class="btn" data-v="0">Ocultar</button>
     </div>
   </div>
 
@@ -142,9 +136,9 @@ select:focus{border-color:var(--bl)}
     <div class="ph">
       <span class="pt" id="maintitle">—</span>
       <div class="leg">
-        <div class="li"><div class="ll" id="legline" style="background:var(--ndvi)"></div>série</div>
+        <div class="li"><div class="ll" id="legline" style="background:var(--ndvi)"></div>série temporal</div>
         <div class="li"><div class="ld" style="border-color:var(--bl)"></div>média móvel</div>
-        <div class="li"><div class="ld" style="border-color:var(--yw)"></div>regressão</div>
+        <div class="li"><div class="ld" style="border-color:var(--yw)"></div>reta de regressão</div>
       </div>
     </div>
     <canvas id="mainchart" height="260"></canvas>
@@ -164,7 +158,6 @@ const ICLR = {NDVI:'#3fb950',NDMI:'#58a6ff',EVI:'#f0883e',SAVI:'#bc8cff',NBR:'#f
 
 const S = {sheets:{}, roi:null, idx:'NDVI', ma:4, reg:true, main:null, small:{}};
 
-// ── LOADER ──
 function setLoad(msg, pct) {
   document.getElementById('lt').textContent = msg;
   document.getElementById('lf').style.width = pct + '%';
@@ -179,13 +172,12 @@ function showErr(msg) {
   document.getElementById('loader').classList.add('out');
   document.getElementById('app').style.display = 'block';
   document.getElementById('dot').className = 'dot er';
-  document.getElementById('dotlbl').textContent = 'erro';
+  document.getElementById('dotlbl').textContent = 'erro ao carregar';
   const b = document.getElementById('errbox');
   b.style.display = 'block';
   b.textContent = '⚠ ' + msg;
 }
 
-// ── BOOT ──
 (async () => {
   try {
     setLoad('Buscando analise.xlsx…', 15);
@@ -206,7 +198,6 @@ function showErr(msg) {
   } catch(e) { showErr(e.message); }
 })();
 
-// ── ÍNDICES ESPECTRAIS ──
 function gm(row, band) {
   for (const k of [band+'_median', band.toLowerCase()+'_median']) {
     if (row[k] !== undefined && row[k] !== null && row[k] !== '') return parseFloat(row[k]);
@@ -231,7 +222,6 @@ function calcIdx(row) {
   return {NDVI:ndvi, NDMI:ndmi, EVI:evi, SAVI:savi, NBR:nbr};
 }
 
-// ── PREP DATA ──
 function prep(roiName) {
   const raw = S.sheets[roiName] || [];
   let arr = [];
@@ -243,7 +233,6 @@ function prep(roiName) {
     arr.push({date:d, ...calcIdx(row)});
   });
   arr.sort((a,b) => a.date - b.date);
-
   IDX.forEach(ix => {
     arr.forEach(r => { if(r[ix]!==undefined&&(r[ix]<-1||r[ix]>1)) r[ix]=null; });
     for(let i=1;i<arr.length-1;i++){
@@ -266,7 +255,6 @@ function prep(roiName) {
   return arr;
 }
 
-// ── ESTATÍSTICAS ──
 function movAvg(ys, w) {
   if(!w) return ys.map(()=>null);
   return ys.map((_,i)=>{
@@ -325,8 +313,7 @@ function mannKendall(ys) {
   return {trend, tau:tau.toFixed(3), p:pv.toFixed(4)};
 }
 
-// ── CHART OPTIONS ──
-function chartOpts(idx, small=false) {
+function chartOpts(small=false) {
   return {
     responsive:true,
     interaction:{mode:'index',intersect:false},
@@ -356,9 +343,7 @@ function chartOpts(idx, small=false) {
   };
 }
 
-// ── BUILD UI ──
 function buildUI(rois) {
-  // summary cards
   let posRois=0, totalRows=0, lastDate=null;
   rois.forEach(r => {
     const d=prep(r);
@@ -369,19 +354,17 @@ function buildUI(rois) {
   });
   const pct=rois.length?Math.round(posRois/rois.length*100):0;
   document.getElementById('sumcards').innerHTML = `
-    <div class="sc"><div class="scl">ROIs monitoradas</div><div class="scv g">${rois.length}</div><div class="scs">polígonos ativos</div></div>
-    <div class="sc"><div class="scl">Tendência positiva</div><div class="scv b">${pct}%</div><div class="scs">${posRois} de ${rois.length} ROIs (NDVI)</div></div>
+    <div class="sc"><div class="scl">Áreas monitoradas</div><div class="scv g">${rois.length}</div><div class="scs">polígonos ativos</div></div>
+    <div class="sc"><div class="scl">Tendência positiva</div><div class="scv b">${pct}%</div><div class="scs">${posRois} de ${rois.length} áreas (NDVI)</div></div>
     <div class="sc"><div class="scl">Registros totais</div><div class="scv y">${totalRows}</div><div class="scs">capturas processadas</div></div>
     <div class="sc"><div class="scl">Última coleta</div><div class="scv" style="font-size:18px;color:var(--tx)">${lastDate?lastDate.toLocaleDateString('pt-BR'):'—'}</div><div class="scs">data mais recente</div></div>
   `;
 
-  // ROI select
   const sel=document.getElementById('roisel');
-  rois.forEach(r=>{ const o=document.createElement('option'); o.value=o.textContent=r; sel.appendChild(o); });
+  rois.forEach(r=>{ const o=document.createElement('option'); o.value=r; o.textContent='Área '+r; sel.appendChild(o); });
   S.roi=rois[0];
   sel.addEventListener('change',()=>{ S.roi=sel.value; render(); });
 
-  // index tabs
   document.querySelectorAll('.it').forEach(btn=>{
     btn.addEventListener('click',()=>{
       S.idx=btn.dataset.i;
@@ -392,7 +375,6 @@ function buildUI(rois) {
     });
   });
 
-  // MA buttons
   document.querySelectorAll('#magrp .btn').forEach(btn=>{
     btn.addEventListener('click',()=>{
       document.querySelectorAll('#magrp .btn').forEach(b=>b.classList.remove('on'));
@@ -400,7 +382,6 @@ function buildUI(rois) {
     });
   });
 
-  // Reg buttons
   document.querySelectorAll('#reggrp .btn').forEach(btn=>{
     btn.addEventListener('click',()=>{
       document.querySelectorAll('#reggrp .btn').forEach(b=>b.classList.remove('on'));
@@ -411,9 +392,8 @@ function buildUI(rois) {
   render();
 }
 
-// ── RENDER ──
 function render() {
-  document.getElementById('roilbl').textContent = 'ROI ' + S.roi;
+  document.getElementById('roilbl').textContent = 'Área ' + S.roi;
   const data = prep(S.roi);
   renderMain(data);
   renderStats(data);
@@ -426,8 +406,9 @@ function renderMain(data) {
   const ys=data.map(d=>d[S.idx]!=null?+d[S.idx].toFixed(6):null);
   const ma=movAvg(ys,S.ma);
   const reg=S.reg?linReg(ys):null;
+  const maLabel = S.ma>0 ? 'Média móvel ('+S.ma+' semanas)' : 'Média móvel';
 
-  document.getElementById('maintitle').textContent = S.idx + ' — ROI ' + S.roi;
+  document.getElementById('maintitle').textContent = S.idx + ' — Área ' + S.roi;
 
   const ds=[{
     label:S.idx, data:ys,
@@ -437,19 +418,19 @@ function renderMain(data) {
     borderWidth:1.5, order:3
   }];
   if(S.ma>0) ds.push({
-    label:'Média móvel ('+S.ma+' sem)', data:ma,
+    label:maLabel, data:ma,
     borderColor:'#58a6ff', borderWidth:2, borderDash:[6,3],
     pointRadius:0, fill:false, tension:0.4, spanGaps:true, order:2
   });
   if(reg) ds.push({
-    label:'Regressão', data:reg,
+    label:'Reta de regressão', data:reg,
     borderColor:'#e3b341', borderWidth:1.5, borderDash:[3,3],
     pointRadius:0, fill:false, order:1
   });
 
   const ctx=document.getElementById('mainchart');
   if(S.main) S.main.destroy();
-  S.main=new Chart(ctx,{type:'line',data:{labels,datasets:ds},options:chartOpts(S.idx)});
+  S.main=new Chart(ctx,{type:'line',data:{labels,datasets:ds},options:chartOpts(false)});
 }
 
 function renderStats(data) {
@@ -474,11 +455,11 @@ function renderStats(data) {
       <div class="stn ${ix.toLowerCase()}">${ix}</div>
       <div class="sr"><span class="k">Tendência</span><span class="v"><span class="badge ${tclass}">${ticon} ${mk.trend}</span></span></div>
       <div class="sr"><span class="k">Mann-Kendall τ</span><span class="v">${mk.tau??'—'}</span></div>
-      <div class="sr"><span class="k">p-valor</span><span class="v">${mk.p??'—'}</span></div>
-      <div class="sr"><span class="k">Slope/ano (Theil-Sen)</span><span class="v">${slopeY}</span></div>
+      <div class="sr"><span class="k">Valor de p</span><span class="v">${mk.p??'—'}</span></div>
+      <div class="sr"><span class="k">Taxa anual (Theil-Sen)</span><span class="v">${slopeY}</span></div>
       <div class="sr"><span class="k">Último valor</span><span class="v">${last}</span></div>
       <div class="sr"><span class="k">Média</span><span class="v">${mean}</span></div>
-      <div class="sr"><span class="k">Min / Max</span><span class="v">${min} / ${max}</span></div>
+      <div class="sr"><span class="k">Mín. / Máx.</span><span class="v">${min} / ${max}</span></div>
     `;
     grid.appendChild(el);
   });
@@ -499,7 +480,7 @@ function renderSmall(data) {
 
     const wrap=document.createElement('div');
     wrap.className='smp';
-    wrap.innerHTML=`<div class="smpt" style="color:${color}">${ix} <span style="color:var(--dm);font-weight:400">ROI ${S.roi}</span></div><canvas id="sc_${ix}" height="150"></canvas>`;
+    wrap.innerHTML=`<div class="smpt" style="color:${color}">${ix} <span style="color:var(--dm);font-weight:400">· Área ${S.roi}</span></div><canvas id="sc_${ix}" height="150"></canvas>`;
     grid.appendChild(wrap);
 
     setTimeout(()=>{
@@ -509,11 +490,19 @@ function renderSmall(data) {
         fill:true, tension:0.3,
         pointRadius:data.length>60?0:2, borderWidth:1.5, order:3
       }];
-      if(S.ma>0) ds.push({label:'MA',data:ma,borderColor:'#58a6ff',borderWidth:1.5,borderDash:[5,3],pointRadius:0,fill:false,spanGaps:true,tension:0.4,order:2});
-      if(reg) ds.push({label:'Reg',data:reg,borderColor:'#e3b341',borderWidth:1,borderDash:[3,3],pointRadius:0,fill:false,order:1});
+      if(S.ma>0) ds.push({
+        label:'Média móvel', data:ma,
+        borderColor:'#58a6ff',borderWidth:1.5,borderDash:[5,3],
+        pointRadius:0,fill:false,spanGaps:true,tension:0.4,order:2
+      });
+      if(reg) ds.push({
+        label:'Reta de regressão', data:reg,
+        borderColor:'#e3b341',borderWidth:1,borderDash:[3,3],
+        pointRadius:0,fill:false,order:1
+      });
       const ctx=document.getElementById('sc_'+ix);
       if(!ctx) return;
-      S.small[ix]=new Chart(ctx,{type:'line',data:{labels,datasets:ds},options:chartOpts(ix,true)});
+      S.small[ix]=new Chart(ctx,{type:'line',data:{labels,datasets:ds},options:chartOpts(true)});
     },0);
   });
 }
